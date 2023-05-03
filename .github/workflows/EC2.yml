@@ -1,0 +1,18 @@
+name: Entrega continua
+
+on:
+  workflow_call:
+  
+jobs:
+ EC2:
+   runs-on: ${{ matrix.os }}
+     strategy:
+       matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+     steps:
+     - name: Download a Build Artifact
+       uses: actions/download-artifact@v3.0.0
+       with:
+     # Artifact name
+         name: programa
+     - uses: actions/checkout@v3
